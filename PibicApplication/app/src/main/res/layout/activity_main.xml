@@ -29,7 +29,6 @@
         android:layout_centerHorizontal="true"
         android:fontFamily="\@font/pacifico"
         android:textStyle="italic"
-        android:clickable="true"
         android:elegantTextHeight="false"
         android:elevation="0dp"
         android:focusable="true"

@@ -18,6 +18,9 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".InfoActivity" />
         <activity android:name=".PictureActivity"></activity>
+
+        <uses-feature android:name="android.hardware.camera"
+            android:required="true" />
     </application>
 
 </manifest>

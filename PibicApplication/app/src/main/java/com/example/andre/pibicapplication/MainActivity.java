@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
                 /* Leva para outra activity */
                 Intent intent = new Intent(getApplicationContext(),MenuActivity.class);
                 startActivity(intent);
-                setContentView(R.layout.activity_menu);
             }
         });
     }
