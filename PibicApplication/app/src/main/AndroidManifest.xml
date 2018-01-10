@@ -17,10 +17,14 @@
         </activity>
         <activity android:name=".MenuActivity" />
         <activity android:name=".InfoActivity" />
-        <activity android:name=".PictureActivity"></activity>
+        <activity android:name=".PictureActivity" />
 
-        <uses-feature android:name="android.hardware.camera"
-            android:required="true" />
+        <uses-permission android:name="android.permission.CAMERA" />
+
+        <activity android:name=".TutorialActivity" />
+        <activity android:name=".PopUpActivity"
+            android:theme="@style/AppTheme.CustomTheme"
+            ></activity>
     </application>
 
 </manifest>

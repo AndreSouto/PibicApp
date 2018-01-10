@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.andre.pibicapplication.MenuActivity"
-    android:background="@drawable/gradient">
+    android:background="@drawable/gradient"
+    android:elevation="0dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,28 +25,71 @@
         android:focusableInTouchMode="false"
         android:textSize="30dp" />
 
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/imageButton"
-        android:src="@drawable/icon"
-        android:background="#00ffffff"
-        android:elevation="15dp"
-        android:adjustViewBounds="false"
-        android:clickable="false"
-        android:layout_marginBottom="55dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/imageButton2" />
-
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/imageButton2"
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:text="O Que é Arcus Senilis ?"
+        android:id="@+id/button2"
+        android:textStyle="italic"
+        android:layout_marginTop="89dp"
         android:layout_below="@+id/textView"
-        android:src="@drawable/interrog"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="88dp"
+        android:textSize="25dp"
         android:background="#00ffffff"
-        android:elevation="15dp" />
+        android:elevation="0dp" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:text="Verificar Nível de Colesterol"
+        android:id="@+id/button3"
+        android:textStyle="italic"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:textSize="25dp"
+        android:background="#00ffffff" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:text="Como Utilizar o Aplicativo ?"
+        android:id="@+id/button4"
+        android:textStyle="italic"
+        android:layout_marginTop="43dp"
+        android:textSize="25dp"
+        android:layout_below="@+id/button3"
+        android:layout_centerHorizontal="true"
+        android:background="#00ffffff"
+        android:elevation="0dp" />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageButton"
+        android:src="@drawable/mybutton"
+        android:background="#00ffffff"
+        android:adjustViewBounds="true"
+        android:elevation="0dp"
+        android:layout_alignTop="@+id/button4"
+        android:layout_alignStart="@+id/imageView3" />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageView3"
+        android:src="@drawable/mybutton"
+        android:background="#00ffffff"
+        android:layout_above="@+id/button4"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageView4"
+        android:src="@drawable/mybutton"
+        android:background="#00ffffff"
+        android:layout_above="@+id/button3"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

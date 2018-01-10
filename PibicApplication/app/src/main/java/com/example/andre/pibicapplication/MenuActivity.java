@@ -9,15 +9,16 @@ import android.widget.ImageButton;
 
 public class MenuActivity extends AppCompatActivity {
 
-    ImageButton info,picture;
+    Button info,picture,tutorial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        info = (ImageButton) findViewById(R.id.imageButton2);
-        picture = (ImageButton) findViewById(R.id.imageButton);
+        info = (Button) findViewById(R.id.button2);
+        picture = (Button) findViewById(R.id.button3);
+        tutorial = (Button) findViewById(R.id.button4);
 
         /* Botao de informacoes */
         info.setOnClickListener(new View.OnClickListener() {
@@ -35,6 +36,16 @@ public class MenuActivity extends AppCompatActivity {
 
                 /* Leva para outra activity */
                 Intent intent = new Intent(getApplicationContext(),PictureActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        /* Botao para tutorial de como usar */
+        tutorial.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                /* Leva para outra activity */
+                Intent intent = new Intent(getApplicationContext(),TutorialActivity.class);
                 startActivity(intent);
             }
         });
