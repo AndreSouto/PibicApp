@@ -18,7 +18,9 @@
         android:src="@drawable/hospital"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="41dp" />
+        android:layout_marginBottom="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-50dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -38,19 +40,7 @@
         android:singleLine="false"
         android:textColor="#FF8D0000" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Verificador de Colesterol"
-        android:id="@+id/textView"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:textStyle="italic"
-        android:textColor="#8d0000"
-        android:background="#00ffffff"
-        android:focusableInTouchMode="false"
-        android:textSize="30dp" />
+
 
     
 </RelativeLayout>
