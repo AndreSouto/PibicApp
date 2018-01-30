@@ -12,87 +12,87 @@
     android:elevation="0dp">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Verificador de Colesterol"
-        android:id="@+id/textView"
-        android:layout_alignTop="@+id/imageView"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textStyle="italic"
-        android:textColor="#FF8D0000"
+        android:layout_marginTop="23dp"
         android:background="#00ffffff"
         android:focusableInTouchMode="false"
-        android:textSize="30dp" />
+        android:text="Verificador de Colesterol"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FF8D0000"
+        android:textSize="32dp"
+        android:textStyle="italic" />
 
     <Button
-        android:layout_width="250dp"
-        android:layout_height="70dp"
-        android:text="O Que é Arcus Senilis ?"
         android:id="@+id/button2"
-        android:textStyle="italic"
-        android:layout_marginTop="89dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@color/colorAccent"
+        android:elevation="450dp"
+        android:text="O Que é Arcus Senilis ?"
+        android:textColor="#FFFFFF"
         android:textSize="25dp"
-        android:background="#00ffffff"
-        android:elevation="0dp"
-        android:textColor="#FF8D0000" />
+        android:textStyle="italic" />
 
     <Button
-        android:layout_width="250dp"
-        android:layout_height="70dp"
-        android:text="Verificar Nível de Colesterol"
         android:id="@+id/button3"
-        android:textStyle="italic"
-        android:layout_below="@+id/button2"
+        android:layout_width="250dp"
+        android:layout_height="170dp"
+        android:layout_alignTop="@+id/imageView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
-        android:textSize="25dp"
         android:background="#00ffffff"
-        android:textColor="#FF8D0000" />
+        android:text="Verificar Nível de Colesterol"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:textStyle="italic" />
 
     <Button
-        android:layout_width="250dp"
-        android:layout_height="70dp"
-        android:text="Como Utilizar o Aplicativo ?"
         android:id="@+id/button4"
-        android:textStyle="italic"
-        android:layout_marginTop="43dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_alignTop="@+id/button2"
+        android:background="@color/colorAccent"
+        android:elevation="450dp"
+        android:text="Como Utilizar o Aplicativo ?"
+        android:textColor="#FFFFFF"
         android:textSize="25dp"
-        android:layout_below="@+id/button3"
-        android:layout_centerHorizontal="true"
-        android:background="#00ffffff"
-        android:elevation="0dp"
-        android:textColor="#FF8D0000" />
+        android:textStyle="italic" />
+
 
     <ImageView
-        android:layout_width="350dp"
-        android:layout_height="70dp"
-        android:id="@+id/imageButton"
-        android:src="@drawable/mybutton"
-        android:background="#00ffffff"
-        android:adjustViewBounds="true"
-        android:elevation="0dp"
-        android:layout_alignTop="@+id/button4"
-        android:layout_alignStart="@+id/imageView3" />
-
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="70dp"
         android:id="@+id/imageView3"
-        android:src="@drawable/mybutton"
+        android:layout_width="350dp"
+        android:layout_height="170dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="40dp"
         android:background="#00ffffff"
-        android:layout_above="@+id/button4"
-        android:layout_centerHorizontal="true" />
+        android:src="@drawable/mybutton" />
 
     <ImageView
-        android:layout_width="350dp"
-        android:layout_height="70dp"
         android:id="@+id/imageView4"
-        android:src="@drawable/mybutton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignStart="@+id/button4"
+        android:layout_alignTop="@+id/button4"
         android:background="#00ffffff"
-        android:layout_above="@+id/button3"
-        android:layout_centerHorizontal="true" />
+        android:src="@drawable/mybutton2" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignStart="@+id/textView"
+        android:layout_alignTop="@+id/button2"
+        android:background="#00ffffff"
+        android:src="@drawable/mybutton2" />
+
 
 </RelativeLayout>
