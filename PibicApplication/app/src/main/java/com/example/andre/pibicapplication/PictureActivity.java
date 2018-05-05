@@ -3,6 +3,7 @@ package com.example.andre.pibicapplication;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -14,6 +15,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Display;
 import android.view.Surface;
@@ -25,6 +27,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -32,6 +35,7 @@ import java.io.IOException;
 
 public class PictureActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 
+    String PATHNAME = "sdcard/camera_app/cam_image.jpg";
     private float RectLeft, RectTop,RectRight,RectBottom;
     int  deviceHeight,deviceWidth;
     Button pictureButton;
@@ -68,7 +72,7 @@ public class PictureActivity extends AppCompatActivity implements SurfaceHolder.
 
                 try {
                     /* Write to SD Card */
-                    outStream = new FileOutputStream(String.format("sdcard/camera_app/cam_image.jpg"));
+                    outStream = new FileOutputStream(String.format(PATHNAME));
                     outStream.write(data);
                     outStream.close();
 
