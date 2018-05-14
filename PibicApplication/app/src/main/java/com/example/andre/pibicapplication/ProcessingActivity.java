@@ -3,11 +3,15 @@ package com.example.andre.pibicapplication;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,6 +20,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -36,7 +41,11 @@ public class ProcessingActivity extends AppCompatActivity {
         pic = (ImageView) findViewById(R.id.imageView2);
         pic.setImageDrawable(Drawable.createFromPath(path));
 
-        sendToServer();
+        try {
+            sendToServer();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         try {
             callExe();
@@ -46,7 +55,7 @@ public class ProcessingActivity extends AppCompatActivity {
 
     }
 
-    private void sendToServer(){
+    private void sendToServer() throws JSONException {
 
         Bitmap bitmap = BitmapFactory.decodeFile(path);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -55,40 +64,51 @@ public class ProcessingActivity extends AppCompatActivity {
         String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
         String json_response = "";
 
-        try {
-            URL url = new URL("https://example.com/api_endpoint");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        JSONObject postData = new JSONObject();
+        postData.put("foto:", encoded);
 
-            conn.setReadTimeout(15000);
-            conn.setConnectTimeout(15000);
-            conn.setRequestMethod("POST");
-            conn.setDoInput(true);
-            conn.setDoOutput(true);
+        new SendDeviceDetails().execute("http://172.20.10.5:8080/imagem", postData.toString());
 
-            OutputStream os = conn.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-
-            writer.write(encoded);
-            writer.flush();
-            writer.close();
-            os.close();
-
-            Log.d("Auth", conn.getResponseCode() + "");
-
-            InputStreamReader in = new InputStreamReader(conn.getInputStream());
-            BufferedReader br = new BufferedReader(in);
-            String text = "";
-
-            while ((text = br.readLine()) != null) {
-                json_response += text;
-            }
-            conn.disconnect();
-        } catch (IOException e) {
-            Log.d(getClass().getName(), "" + e.getMessage());
-        }
-
-        System.out.println(json_response);
     }
 
     private void callExe() throws IOException {}
+
+    private class SendDeviceDetails extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String data = "";
+
+            HttpURLConnection httpURLConnection = null;
+            try {
+
+                httpURLConnection = (HttpURLConnection) new URL(params[0]).openConnection();
+                httpURLConnection.setRequestMethod("POST");
+
+                httpURLConnection.setDoOutput(true);
+
+                DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
+                wr.writeBytes(params[1]);
+                wr.flush();
+                wr.close();
+
+
+            } catch (Exception e) {
+               e.printStackTrace();
+            } finally {
+                if (httpURLConnection != null) {
+                    httpURLConnection.disconnect();
+                }
+            }
+
+            return data;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            Log.e("TAG", result); // this is expecting a response code to be sent from your server upon receiving the POST data
+        }
+    }
 }
