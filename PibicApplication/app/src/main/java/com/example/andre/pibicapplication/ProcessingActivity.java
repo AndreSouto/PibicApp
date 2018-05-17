@@ -19,6 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -37,6 +38,7 @@ public class ProcessingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_processing);
 
+
          /* ImageView onde foto tirada aparece */
         pic = (ImageView) findViewById(R.id.imageView2);
         pic.setImageDrawable(Drawable.createFromPath(path));
@@ -44,6 +46,8 @@ public class ProcessingActivity extends AppCompatActivity {
         try {
             sendToServer();
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -55,7 +59,7 @@ public class ProcessingActivity extends AppCompatActivity {
 
     }
 
-    private void sendToServer() throws JSONException {
+    private void sendToServer() throws JSONException, IOException {
 
         Bitmap bitmap = BitmapFactory.decodeFile(path);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -64,8 +68,9 @@ public class ProcessingActivity extends AppCompatActivity {
         String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
         String json_response = "";
 
+
         JSONObject postData = new JSONObject();
-        postData.put("foto:", encoded);
+        postData.put("foto", "data:image/JPEG;base64," + encoded);
 
         new SendDeviceDetails().execute("http://172.20.10.5:8080/imagem", postData.toString());
 
@@ -85,13 +90,20 @@ public class ProcessingActivity extends AppCompatActivity {
 
                 httpURLConnection = (HttpURLConnection) new URL(params[0]).openConnection();
                 httpURLConnection.setRequestMethod("POST");
-
+                httpURLConnection.setRequestProperty("Content-Type", "application/json");
                 httpURLConnection.setDoOutput(true);
+                httpURLConnection.setChunkedStreamingMode(0);
+                httpURLConnection.connect();
 
                 DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
                 wr.writeBytes(params[1]);
                 wr.flush();
                 wr.close();
+
+                if (httpURLConnection.getResponseCode() != 200) {
+                    throw new RuntimeException("Failed : HTTP error code : "
+                            + httpURLConnection.getErrorStream());
+                }
 
 
             } catch (Exception e) {
@@ -108,7 +120,7 @@ public class ProcessingActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Log.e("TAG", result); // this is expecting a response code to be sent from your server upon receiving the POST data
+            Log.e("TAG", result);
         }
     }
 }
