@@ -77,7 +77,7 @@ public class ProcessingActivity extends AppCompatActivity {
         JSONObject postData = new JSONObject();
         postData.put("foto", "data:image/JPEG;base64," + encoded);
 
-        new SendDeviceDetails().execute("http://172.20.10.5:8080/imagem", postData.toString());
+        new SendDeviceDetails().execute("http://192.168.43.164:8080/imagem", postData.toString());
 
     }
 
@@ -144,12 +144,7 @@ public class ProcessingActivity extends AppCompatActivity {
 
             try {
                 mainObject = new JSONObject(result);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                 name = mainObject.getString("resposta");
+                name = mainObject.getString("resposta");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
