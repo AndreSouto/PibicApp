@@ -34,4 +34,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="278dp"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="61dp"
+        android:text=""
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="40dp" />
+
 </RelativeLayout>
