@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.io.ByteArrayOutputStream;
@@ -38,7 +39,7 @@ public class PictureActivity extends AppCompatActivity implements SurfaceHolder.
     String PATHNAME = "sdcard/camera_app/cam_image.jpg";
     private float RectLeft, RectTop,RectRight,RectBottom;
     int  deviceHeight,deviceWidth;
-    Button pictureButton;
+    ImageButton pictureButton;
     SurfaceView  cameraView,transparentView;
     SurfaceHolder holder,holderTransparent;
     Camera camera;
@@ -54,7 +55,7 @@ public class PictureActivity extends AppCompatActivity implements SurfaceHolder.
         /* Surface View onde consta a camera */
         cameraView = (SurfaceView)findViewById(R.id.CameraView);
         /* Button para retirar foto */
-        pictureButton = (Button) findViewById(R.id.pictureButton);
+        pictureButton = (ImageButton) findViewById(R.id.pictureButton);
 
 
         /* JPEG callback para criar pasta camera_app e salvar a foto tirada */
@@ -142,10 +143,14 @@ public class PictureActivity extends AppCompatActivity implements SurfaceHolder.
         paint.setColor(Color.WHITE);
         paint.setStrokeWidth(3);
 
-        RectLeft = 150;
-        RectTop = 230 ;
-        RectRight = 550;
-        RectBottom =RectTop+ 500;
+        int screenWidth = getScreenWidth();
+        int screenHeight = getScreenHeight();
+
+        double RectLeft = screenWidth/4;
+        double RectTop = screenHeight/4;
+        double RectRight = screenWidth*0.75;
+        //double RectBottom = RectTop + 500;
+        double RectBottom = screenHeight*0.75;
 
         Rect rec=new Rect((int) RectLeft,(int) RectTop,(int) RectRight,(int) RectBottom);
         canvas.drawRect(rec,paint);
@@ -177,6 +182,10 @@ public class PictureActivity extends AppCompatActivity implements SurfaceHolder.
         if(display.getRotation() == Surface.ROTATION_0)
         {
             camera.setDisplayOrientation(90);
+        }
+        if (param.getSupportedFocusModes().contains(
+                Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
+            param.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
         }
 
         camera.setParameters(param);
