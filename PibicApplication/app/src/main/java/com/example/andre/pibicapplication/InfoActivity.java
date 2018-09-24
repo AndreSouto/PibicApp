@@ -9,28 +9,17 @@ import android.widget.ImageButton;
 
 public class InfoActivity extends AppCompatActivity {
 
-    ImageButton larrow,rarrow;
+    Button seeExampleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-        larrow = (ImageButton) findViewById(R.id.imageButton2);
-        rarrow = (ImageButton) findViewById(R.id.imageButton3);
-
-        /* Menu */
-        larrow.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                /* Leva para outra activity */
-                Intent intent = new Intent(getApplicationContext(),MenuActivity.class);
-                startActivity(intent);
-            }
-        });
+        seeExampleButton = (Button) findViewById(R.id.example_button);
 
         /* Figura ilustrativa */
-        rarrow.setOnClickListener(new View.OnClickListener() {
+        seeExampleButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 /* Leva para outra activity */

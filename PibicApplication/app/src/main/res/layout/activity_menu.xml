@@ -62,7 +62,7 @@
         android:elevation="450dp"
         android:text="Como Utilizar o Aplicativo ?"
         android:textColor="#FFFFFF"
-        android:textSize="25dp"
+        android:textSize="23dp"
         android:textStyle="italic" />
 
 

@@ -25,7 +25,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.ByteArrayOutputStream;
@@ -39,7 +39,7 @@ public class PictureActivity extends AppCompatActivity implements SurfaceHolder.
     String PATHNAME = "sdcard/camera_app/cam_image.jpg";
     private float RectLeft, RectTop,RectRight,RectBottom;
     int  deviceHeight,deviceWidth;
-    ImageButton pictureButton;
+    Button pictureButton;
     SurfaceView  cameraView,transparentView;
     SurfaceHolder holder,holderTransparent;
     Camera camera;
@@ -55,7 +55,7 @@ public class PictureActivity extends AppCompatActivity implements SurfaceHolder.
         /* Surface View onde consta a camera */
         cameraView = (SurfaceView)findViewById(R.id.CameraView);
         /* Button para retirar foto */
-        pictureButton = (ImageButton) findViewById(R.id.pictureButton);
+        pictureButton = (Button) findViewById(R.id.pictureButton);
 
 
         /* JPEG callback para criar pasta camera_app e salvar a foto tirada */

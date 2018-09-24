@@ -39,21 +39,15 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true" />
 
-    <ImageButton
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton2"
-        android:src="@drawable/larrow"
+        android:id="@+id/example_button"
+        android:src="@drawable/rarrow"
+        android:text="Ver exemplo"
         android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"
-        android:background="#FF8D0000" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton3"
-        android:src="@drawable/rarrow"
-        android:layout_below="@+id/textView2"
         android:layout_alignParentEnd="true"
         android:background="#FF8D0000" />
 

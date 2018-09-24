@@ -20,14 +20,14 @@
             android:layout_alignParentEnd="true"
             android:background="#00ffffff" />
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_camera_alt_black_36dp"
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:id="@+id/pictureButton"
             android:background="@drawable/roundcorner"
             android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
             android:layout_centerHorizontal="true"
              />
 
